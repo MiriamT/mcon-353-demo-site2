@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button, Input } from "@mui/material";
+
 import "./todo.css";
 
 export const Todo = (props) => {
@@ -15,12 +17,13 @@ export const Todo = (props) => {
   }
 
   return (
-    <div>
-      <input
+    <div data-testid="todo">
+      <Input
+        placeholder="add task"
         type="text"
         onChange={(event) => setInputText(event.target.value)}
       />
-      <button onClick={addTodo}>Add</button>
+      <Button onClick={addTodo}>Add</Button>
       {todos.map((todo) => (
         <TodoItem text={todo} deleteTodo={deleteTodo} />
       ))}
