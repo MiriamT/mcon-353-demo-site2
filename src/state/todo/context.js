@@ -1,5 +1,5 @@
-import React, { useReducer } from 'react';
-import { todoReducer } from './reducer';
+import React, { useReducer } from "react";
+import { todoReducer } from "./reducer";
 
 export const TodoContext = React.createContext();
 
@@ -20,8 +20,4 @@ export const TodoProvider = (props) => {
       {props.children}
     </TodoContext.Provider>
   );
-
-  <TodoProvider >
-    <Todo />
-  </TodoProvider>
 };

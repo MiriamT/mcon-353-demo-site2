@@ -10,6 +10,7 @@ export const Todo = (props) => {
   function addTodo() {
     const newTodos = [...todos, inputText];
     setTodos(newTodos);
+    setInputText("");
   }
 
   function deleteTodo(deletedTodo) {
@@ -21,11 +22,12 @@ export const Todo = (props) => {
       <Input
         placeholder="add task"
         type="text"
+        value={inputText}
         onChange={(event) => setInputText(event.target.value)}
       />
       <Button onClick={addTodo}>Add</Button>
-      {todos.map((todo) => (
-        <TodoItem text={todo} deleteTodo={deleteTodo} />
+      {todos.map((todo, index) => (
+        <TodoItem text={todo} deleteTodo={deleteTodo} key={index} />
       ))}
     </div>
   );
@@ -33,9 +35,14 @@ export const Todo = (props) => {
 
 const TodoItem = (props) => {
   return (
-    <div>
-      {props.text}
-      <button onClick={() => props.deleteTodo(props.text)}>delete</button>
+    <div data-testid="todoItem">
+      <span data-testid="todoItem__text">{props.text}</span>
+      <button
+        data-testid="todoItem__delete-button"
+        onClick={() => props.deleteTodo(props.text)}
+      >
+        delete
+      </button>
     </div>
   );
 };
